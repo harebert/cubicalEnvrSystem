@@ -1,0 +1,173 @@
+
+1：登录
+
+http://localhost:8077/apilogin.action?userName=ancd&password=123456
+登录成功返回
+{"error":0}
+登录失败返回
+{"error":1}
+服务器端出错返回
+{"error":2}
+2：取得温湿度
+http://localhost:8077/api_interface.action?cmd=REPORT&cabinetNo=jg2&year=2013&month=10&day=25
+
+cmd: "REPORT" 表示历史数据，需要year,month,day三个参数，取某天的数据
+	-返回数据增加reportDate字段显示请求日期
+	-其返回的数据应该是离当前时间最近的24个数据
+cmd:“CURRENT” 表示取当前状态数据，每个机柜只有一条记录
+
+”REPORT“返回数据格式如下：
+{
+    "error": 0,
+    "reportDate": "2013-11-10",
+    "cabinetName": "11",
+    "cabinetId": 3,
+    "devId": 3,
+    "devNo": "1",
+    "devName": "1",
+    "deviceStateList": [
+        {
+            "createTime": "2013-11-10 0:10:00",
+            "temp": 24,
+            "humidity": 53
+        },
+        {
+            "createTime": "2013-11-10 1:10:00",
+            "temp": 33,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 2:10:00",
+            "temp": 40,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 3:10:00",
+            "temp": 51,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 4:10:00",
+            "temp": 24,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 5:10:00",
+            "temp": 42,
+            "humidity": 53
+        },
+        {
+            "createTime": "2013-11-10 6:10:00",
+            "temp": 53,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 7:10:00",
+            "temp": 24,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 8:10:00",
+            "temp": 34,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 9:10:00",
+            "temp": 54,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 10:10:00",
+            "temp": 60,
+            "humidity": 53
+        },
+        {
+            "createTime": "2013-11-10 11:10:00",
+            "temp": 20,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 12:10:00",
+            "temp": 45,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 13:10:00",
+            "temp": 14,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 14:10:00",
+            "temp": 15,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 15:10:00",
+            "temp": 41,
+            "humidity": 53
+        },
+        {
+            "createTime": "2013-11-10 16:10:00",
+            "temp": 13,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 17:10:00",
+            "temp": 34,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 18:10:00",
+            "temp": 21,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 19:10:00",
+            "temp": 45,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 20:10:00",
+            "temp": 42,
+            "humidity": 53
+        },
+        {
+            "createTime": "2013-11-10 21:10:00",
+            "temp": 23,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 22:10:00",
+            "temp": 29,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 23:10:00",
+            "temp": 41,
+            "humidity": 50
+        },
+        {
+            "createTime": "2013-11-10 24:10:00",
+            "temp": 30,
+            "humidity": 50
+        }
+    ]
+}
+
+“CURRENT”返回数据格式如下：
+{    "error": 0,    "cabinetList": [        {            "cabinetNo": "1",            "cabinetName": "机柜1",            "cabinetDesc": "靠近窗户的机柜",            "cabinetId": 1,            "devId": 1,            "devNo": "dv1",            "devName": "dv1",            "temp": 34,            "humidity": 53        },        {            "cabinetNo": "2",            "cabinetName": "机柜2",            "cabinetDesc": "靠近窗户的机柜",            "cabinetId": 2,            "devId": 3,            "devNo": "1",            "devName": "1",            "temp": 23,            "humidity": 23        },{            "cabinetNo": "3",            "cabinetName": "机柜3",            "cabinetDesc": "靠近窗户的机柜",            "cabinetId": 3,            "devId": 3,            "devNo": "1",            "devName": "1",            "temp": 33,            "humidity": 43        },{            "cabinetNo": "4",            "cabinetName": "机柜4",            "cabinetDesc": "靠近窗户的机柜",            "cabinetId": 4,            "devId": 3,            "devNo": "1",            "devName": "1",            "temp": 26,            "humidity": 43        },{            "cabinetNo": "机柜5",            "cabinetName": "11",            "cabinetDesc": "靠近窗户的机柜",            "cabinetId": 5,            "devId": 3,            "devNo": "1",            "devName": "1",            "temp": 25,            "humidity": 43        },{            "cabinetNo": "6",            "cabinetName": "机柜6",            "cabinetDesc": "靠近窗户的机柜",            "cabinetId": 6,            "devId": 3,            "devNo": "1",            "devName": "1",            "temp": 23,            "humidity": 23        },{            "cabinetNo": "7",            "cabinetName": "机柜7",            "cabinetDesc": "靠近窗户的机柜",            "cabinetId": 7,            "devId": 3,            "devNo": "1",            "devName": "1",            "temp": 23,            "humidity": 23        },{            "cabinetNo": "8",            "cabinetName": "机柜8",            "cabinetDesc": "靠近窗户的机柜",            "cabinetId": 8,            "devId": 3,            "devNo": "1",            "devName": "1",            "temp": 23,            "humidity": 23        },{            "cabinetNo": "9",            "cabinetName": "机柜9",            "cabinetDesc": "靠近窗户的机柜",            "cabinetId": 9,            "devId": 3,            "devNo": "1",            "devName": "1",            "temp": 23,            "humidity": 23        },{            "cabinetNo": "10",            "cabinetName": "机柜10",            "cabinetDesc": "靠近窗户的机柜",            "cabinetId": 3,            "devId": 3,            "devNo": "1",            "devName": "1",            "temp": 23,            "humidity": 23        },{            "cabinetNo": "11",            "cabinetName": "机柜11",            "cabinetDesc": "靠近窗户的机柜",            "cabinetId": 10,            "devId": 3,            "devNo": "1",            "devName": "1",            "temp": 23,            "humidity": 23        }    ]}
+
+服务器端出错返回如下：
+{"error":1}
+
+参数错误出错返回如下：
+{"error":2}
+
+没有数据返回如下：
+{"error”:3}
+
+[rootDictionary setValue:@"" forKey:@"IPAddress"];
+    [rootDictionary setValue:@"" forKey:@"username"];
+    [rootDictionary setValue:@"" forKey:@"password"];
+    [rootDictionary setValue:@""  forKey:@"refreshIntval"];
+    [rootDictionary setValue:[NSNumber numberWithBool:NO] forKey:@"recordPassword"];
